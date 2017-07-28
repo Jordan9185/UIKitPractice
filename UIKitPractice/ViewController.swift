@@ -69,6 +69,14 @@ class ViewController: UIViewController {
         
         mapView.mapType = .standard
         
+        let location = CLLocationCoordinate2D(latitude: 25.042477, longitude: 121.564883)
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        
+        let region = MKCoordinateRegion(center: location, span: span)
+        
+        mapView.setRegion(region, animated: true)        
+        
     }
 
 }
