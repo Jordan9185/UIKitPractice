@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         
         setMapKit()
 
-        
     }
 
     func setUpHeaderView() {
@@ -58,6 +57,27 @@ class ViewController: UIViewController {
         segmentedControl.frame.origin = CGPoint(x: self.view.frame.width/3, y: 50)
         
         self.headerView.addSubview(segmentedControl)
+        
+        segmentedControl.selectedSegmentIndex = 0
+        
+        segmentedControl.addTarget(self, action: #selector(segmentItemSwitch), for: .valueChanged)
+    }
+    
+    func segmentItemSwitch(sender: UISegmentedControl) {
+        
+        let location = CLLocationCoordinate2D(latitude: 25.042477, longitude: 121.564883)
+        
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = location
+        
+        annotation.title = "AppWorks School"
+        
+        annotation.subtitle = sender.titleForSegment(at: sender.selectedSegmentIndex)!
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        mapView.addAnnotation(annotation)
         
     }
     
