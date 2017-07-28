@@ -75,7 +75,17 @@ class ViewController: UIViewController {
         
         let region = MKCoordinateRegion(center: location, span: span)
         
-        mapView.setRegion(region, animated: true)        
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = location
+        
+        annotation.title = "AppWorks School"
+        
+        annotation.subtitle = "Do the UIKit practice!"
+        
+        mapView.addAnnotation(annotation)
         
     }
 
