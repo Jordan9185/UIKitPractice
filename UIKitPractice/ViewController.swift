@@ -8,20 +8,25 @@
 
 import UIKit
 
+import MapKit
+
 class ViewController: UIViewController {
     
     var headerView: UIView!
     
     var segmentedControl: UISegmentedControl!
     
+    var mapView: MKMapView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setUpHeaderView()
         
         addUISegmentedControl()
         
-        addMapKit()
+        setMapKit()
 
         
     }
@@ -50,9 +55,19 @@ class ViewController: UIViewController {
         
         segmentedControl = UISegmentedControl(items: ["早安", "午安", "晚安"])
         
-        segmentedControl.frame.origin = CGPoint(x: self.view.frame.width/2, y: 50)
+        segmentedControl.frame.origin = CGPoint(x: self.view.frame.width/3, y: 50)
         
         self.headerView.addSubview(segmentedControl)
+        
+    }
+    
+    func setMapKit() {
+        
+        mapView = MKMapView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 300))
+        
+        self.headerView.addSubview(mapView)
+        
+        mapView.mapType = .standard
         
     }
 
